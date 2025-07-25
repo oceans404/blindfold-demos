@@ -533,7 +533,7 @@ export default function MatchPage() {
                       <div>
                         <span className="text-gray-400">Type:</span>
                         <span className="ml-1 font-medium text-white">
-                          {key.constructor.name}
+                          {keyType === 'secret' ? 'SecretKey' : 'ClusterKey'}
                         </span>
                       </div>
                       <div>

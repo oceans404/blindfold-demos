@@ -512,7 +512,7 @@ export default function SumPage() {
                       <div>
                         <span className="text-gray-400">Type:</span>
                         <span className="ml-1 font-medium text-white">
-                          {secretKey.constructor.name}
+                          {keyType === 'secret' ? 'SecretKey' : 'ClusterKey'}
                         </span>
                       </div>
                       <div>

@@ -3,10 +3,6 @@
 export default function Home() {
   return (
     <div className="max-w-6xl mx-auto text-white">
-      <h1 className="text-4xl font-bold mb-8 text-white font-mono">
-        BLINDFOLD LIBRARY
-      </h1>
-
       <div className="mb-8">
         <p className="text-lg mb-4 text-gray-300">
           The{' '}
