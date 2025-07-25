@@ -14,6 +14,18 @@ const nextConfig = {
       type: "webassembly/async",
     });
 
+    // Add polyfills for Node.js modules in browser
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        buffer: 'buffer',
+        crypto: 'crypto-browserify',
+        stream: 'stream-browserify',
+        util: 'util',
+        process: 'process/browser',
+      };
+    }
+
     return config;
   },
 };
