@@ -129,7 +129,7 @@ export default function SumPage() {
       const keyToUse = publicKey || secretKey; // Use PublicKey for single node, SecretKey for multi-node
 
       for (const num of parsedNumbers) {
-        const encrypted = await encrypt(keyToUse, num);
+        const encrypted = await encrypt(keyToUse, BigInt(num));
         shares.push(encrypted);
       }
 

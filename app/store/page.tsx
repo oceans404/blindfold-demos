@@ -83,7 +83,7 @@ export default function StorePage() {
           );
           return;
         }
-        dataToEncrypt = num;
+        dataToEncrypt = BigInt(num);
       } else {
         if (new TextEncoder().encode(inputData).length > 4096) {
           setError('String data must be 4096 bytes or less');

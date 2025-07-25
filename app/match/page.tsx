@@ -115,8 +115,8 @@ export default function MatchPage() {
           );
           return;
         }
-        data1 = num1;
-        data2 = num2;
+        data1 = BigInt(num1);
+        data2 = BigInt(num2);
       } else {
         if (
           new TextEncoder().encode(inputData1).length > 4096 ||
