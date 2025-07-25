@@ -208,7 +208,7 @@ export default function SumPage() {
   const renderShareNodes = (
     shareData: any,
     label: string,
-    numberIndex: number
+    numberIndex?: number
   ) => {
     if (!shareData) return null;
 
