@@ -6,7 +6,13 @@ import { SecretKey, encrypt, decrypt } from '@nillion/blindfold';
 import examplePuzzleLink from './puzzle-link.json';
 
 // Pre-encrypted puzzle data
-const PUZZLE_DATA = {
+const PUZZLE_DATA: Record<number, {
+  clue: string;
+  expectedSeed: string;
+  message: string;
+  nextClue: string | null;
+  shares: any;
+}> = {
   1: {
     clue: 'What color do you get when you mix red and blue?',
     expectedSeed: 'purple',
@@ -60,7 +66,7 @@ function PuzzlePage() {
   const [urlShares, setUrlShares] = useState(null);
   const [urlQuestion, setUrlQuestion] = useState('');
   const [isUrlFinal, setIsUrlFinal] = useState(false);
-  const [nextStepData, setNextStepData] = useState(null);
+  const [nextStepData, setNextStepData] = useState<any>(null);
   const [isMessageExpanded, setIsMessageExpanded] = useState(false);
   const [isDecryptionProcessExpanded, setIsDecryptionProcessExpanded] =
     useState(false);
@@ -142,7 +148,7 @@ function PuzzlePage() {
         console.error('Failed to parse puzzle data from URL:', error);
         console.error('sharesParam was:', sharesParam);
         console.error('questionParam was:', questionParam);
-        setError(`Invalid puzzle URL data: ${error.message}`);
+        setError(`Invalid puzzle URL data: ${error instanceof Error ? error.message : String(error)}`);
       }
     } else if (sharesParam || questionParam) {
       // Partial data - something is wrong
@@ -218,7 +224,7 @@ function PuzzlePage() {
     }
   };
 
-  const buildNextStepUrl = (stepData) => {
+  const buildNextStepUrl = (stepData: any) => {
     const params = new URLSearchParams();
     params.set('s', stepData.s);
     params.set('q', stepData.q);
@@ -657,7 +663,7 @@ function PuzzlePage() {
                           );
                         }
 
-                        return sharesData.map((share, index) => (
+                        return sharesData.map((share: any, index: number) => (
                           <div key={index} className="flex items-center gap-2">
                             <div className="text-xs text-gray-400 w-12">
                               Node {index + 1}:
@@ -697,7 +703,7 @@ function PuzzlePage() {
             )}
 
             {/* Next Step or Completion for Built-in Puzzles */}
-            {!isUrlPuzzle && currentStep < 3 && currentPuzzle.nextClue && (
+            {!isUrlPuzzle && currentStep < 3 && 'nextClue' in currentPuzzle && currentPuzzle.nextClue && (
               <div className="border-t border-green-600 pt-4">
                 <div className="text-sm text-gray-300 mb-2">
                   🔗 <strong>Chain of Puzzles:</strong>
@@ -716,7 +722,7 @@ function PuzzlePage() {
                     <div className="text-gray-300">
                       3. Next challenge:{' '}
                       <span className="text-blue-400">
-                        {currentPuzzle.nextClue}
+                        {'nextClue' in currentPuzzle ? currentPuzzle.nextClue : ''}
                       </span>
                     </div>
                   </div>
