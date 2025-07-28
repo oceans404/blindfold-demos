@@ -1,0 +1,19 @@
+{
+  "nodeCount": 3,
+  "keyType": "secret",
+  "completionMessage": "🎉 Congrats! You completed the puzzle!",
+  "steps": [
+    {
+      "question": "Who is Nillion's CEO?",
+      "answer": "Alex Page"
+    },
+    {
+      "question": "What is the native token of nilChain?",
+      "answer": "NIL"
+    },
+    {
+      "question": "What is the name of Nillion's mascot?",
+      "answer": "Steven"
+    }
+  ]
+}

@@ -48,6 +48,12 @@ export default function RootLayout({
               >
                 DECRYPT
               </a>
+              {/* <a
+                href="/puzzle"
+                className="hover:text-gray-300 transition-colors"
+              >
+                PUZZLE
+              </a> */}
             </div>
           </div>
         </nav>
