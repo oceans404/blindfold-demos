@@ -42,6 +42,12 @@ export default function RootLayout({
               <a href="/sum" className="hover:text-gray-300 transition-colors">
                 SUM
               </a>
+              <a
+                href="/decrypt"
+                className="hover:text-gray-300 transition-colors"
+              >
+                DECRYPT
+              </a>
             </div>
           </div>
         </nav>
