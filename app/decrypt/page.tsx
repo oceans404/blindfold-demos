@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { SecretKey, ClusterKey, decrypt } from '@nillion/blindfold';
 
-export default function DecryptPage() {
+function DecryptPageContent() {
   const searchParams = useSearchParams();
   const [keyType, setKeyType] = useState<'secret' | 'cluster'>('secret');
   const [seed, setSeed] = useState('');
@@ -393,5 +393,19 @@ export default function DecryptPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function DecryptPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-xl font-mono text-gray-400">Loading decrypt page...</div>
+        </div>
+      </div>
+    }>
+      <DecryptPageContent />
+    </Suspense>
   );
 }
