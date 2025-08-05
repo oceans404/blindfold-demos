@@ -467,7 +467,7 @@ export default function Home() {
       <h2 className="text-xl font-semibold mb-4 text-white font-mono">Demos</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div
-          className="demo-card border border-gray-700 p-6 opacity-0"
+          className="demo-card border border-gray-700 p-6 opacity-0 flex flex-col"
           onMouseEnter={handleStoreHover}
           onMouseLeave={handleStoreLeave}
         >
@@ -488,13 +488,13 @@ export default function Home() {
             {/* Encrypted nodes */}
             <div className="store-encrypted-nodes opacity-20 flex flex-col items-center justify-center">
               <div className="space-y-1">
-                <div className="encrypted-node w-16 h-4 bg-green-900 border border-green-500 flex items-center justify-center text-[10px] font-mono text-green-300">
+                <div className="encrypted-node w-16 h-4 bg-gray-800 border border-gray-500 flex items-center justify-center text-[10px] font-mono text-gray-300">
                   ajewifoj=
                 </div>
-                <div className="encrypted-node w-16 h-4 bg-green-900 border border-green-500 flex items-center justify-center text-[10px] font-mono text-green-300">
+                <div className="encrypted-node w-16 h-4 bg-gray-800 border border-gray-500 flex items-center justify-center text-[10px] font-mono text-gray-300">
                   mowfxiwf=
                 </div>
-                <div className="encrypted-node w-16 h-4 bg-green-900 border border-green-500 flex items-center justify-center text-[10px] font-mono text-green-300">
+                <div className="encrypted-node w-16 h-4 bg-gray-800 border border-gray-500 flex items-center justify-center text-[10px] font-mono text-gray-300">
                   utqowflx=
                 </div>
               </div>
@@ -517,22 +517,24 @@ export default function Home() {
           <h2 className="text-xl font-semibold mb-4 text-white font-mono">
             STORE
           </h2>
-          <p className="mb-4 text-gray-300 text-sm">
+          <p className="mb-4 text-gray-300 text-sm flex-grow">
             Encrypt data for secure storage on cluster nodes using authenticated
             encryption or secret sharing.
           </p>
-          <a
-            href="/store"
-            className="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 transition-colors font-mono"
-            onMouseEnter={handleButtonHover}
-            onMouseLeave={handleButtonLeave}
-          >
-            TRY IT
-          </a>
+          <div>
+            <a
+              href="/store"
+              className="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 transition-colors font-mono"
+              onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonLeave}
+            >
+              TRY IT
+            </a>
+          </div>
         </div>
 
         <div
-          className="demo-card border border-gray-700 p-6 opacity-0"
+          className="demo-card border border-gray-700 p-6 opacity-0 flex flex-col"
           onMouseEnter={handleMatchHover}
           onMouseLeave={handleMatchLeave}
         >
@@ -592,27 +594,29 @@ export default function Home() {
           <h2 className="text-xl font-semibold mb-4 text-white font-mono">
             MATCH
           </h2>
-          <p className="mb-4 text-gray-300 text-sm">
+          <p className="mb-4 text-gray-300 text-sm flex-grow">
             Generate deterministic hashes for privacy-preserving search and
             matching operations.
           </p>
-          <a
-            href="/match"
-            className="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 transition-colors font-mono"
-            onMouseEnter={handleButtonHover}
-            onMouseLeave={handleButtonLeave}
-          >
-            TRY IT
-          </a>
+          <div>
+            <a
+              href="/match"
+              className="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 transition-colors font-mono"
+              onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonLeave}
+            >
+              TRY IT
+            </a>
+          </div>
         </div>
 
         <div
-          className="demo-card border border-gray-700 p-6 opacity-0"
+          className="demo-card border border-gray-700 p-6 opacity-0 flex flex-col"
           onMouseEnter={handleSumHover}
           onMouseLeave={handleSumLeave}
         >
           <div className="mb-4 h-40">
-            <div className="grid grid-cols-5 gap-2 items-center">
+            <div className="grid grid-cols-5 gap-2 items-start">
               {/* Input 1 */}
               <div className="text-center">
                 <div className="text-sm font-mono text-green-500 mb-1">5</div>
@@ -636,7 +640,7 @@ export default function Home() {
 
               {/* Plus sign */}
               <div className="text-center">
-                <div className="text-lg font-mono text-green-500">+</div>
+                <div className="text-lg font-mono text-green-500 mt-[2px]">+</div>
               </div>
 
               {/* Input 2 */}
@@ -694,25 +698,27 @@ export default function Home() {
               <div className="decrypted-sum-label opacity-20">
                 <div className="text-[9px] font-mono text-gray-400 mb-1">DECRYPTED SUM</div>
               </div>
-              <div className="text-[12px] font-mono text-green-400 opacity-0">8</div>
+              <div className="text-sm font-mono text-green-400 opacity-0">8</div>
             </div>
           </div>
 
           <h2 className="text-xl font-semibold mb-4 text-white font-mono">
             SUM
           </h2>
-          <p className="mb-4 text-gray-300 text-sm">
+          <p className="mb-4 text-gray-300 text-sm flex-grow">
             Perform secure addition on encrypted integers using homomorphic
             encryption or secret sharing.
           </p>
-          <a
-            href="/sum"
-            className="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 transition-colors font-mono"
-            onMouseEnter={handleButtonHover}
-            onMouseLeave={handleButtonLeave}
-          >
-            TRY IT
-          </a>
+          <div>
+            <a
+              href="/sum"
+              className="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 transition-colors font-mono"
+              onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonLeave}
+            >
+              TRY IT
+            </a>
+          </div>
         </div>
       </div>
 
