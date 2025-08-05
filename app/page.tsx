@@ -387,25 +387,31 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="space-y-1">
+            <div className="flex gap-2">
               <a
                 href="https://github.com/NillionNetwork/blindfold-ts"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-gray-800 hover:bg-gray-700 transition-colors p-2 border border-gray-600"
+                className="flex-1 bg-gray-800 hover:bg-gray-700 transition-colors p-2 border border-gray-600 flex items-center justify-center"
               >
-                <span className="text-white font-mono text-xs">
+                <span className="text-white font-mono text-xs flex items-center gap-1">
                   GitHub Repository
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </span>
               </a>
               <a
                 href="https://www.npmjs.com/package/@nillion/blindfold"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-gray-800 hover:bg-gray-700 transition-colors p-2 border border-gray-600"
+                className="flex-1 bg-gray-800 hover:bg-gray-700 transition-colors p-2 border border-gray-600 flex items-center justify-center"
               >
-                <span className="text-white font-mono text-xs">
+                <span className="text-white font-mono text-xs flex items-center gap-1">
                   NPM Package
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </span>
               </a>
             </div>
@@ -437,25 +443,31 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="space-y-1">
+            <div className="flex gap-2">
               <a
                 href="https://github.com/NillionNetwork/blindfold-py"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-gray-800 hover:bg-gray-700 transition-colors p-2 border border-gray-600"
+                className="flex-1 bg-gray-800 hover:bg-gray-700 transition-colors p-2 border border-gray-600 flex items-center justify-center"
               >
-                <span className="text-white font-mono text-xs">
+                <span className="text-white font-mono text-xs flex items-center gap-1">
                   GitHub Repository
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </span>
               </a>
               <a
                 href="https://pypi.org/project/blindfold/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-gray-800 hover:bg-gray-700 transition-colors p-2 border border-gray-600"
+                className="flex-1 bg-gray-800 hover:bg-gray-700 transition-colors p-2 border border-gray-600 flex items-center justify-center"
               >
-                <span className="text-white font-mono text-xs">
+                <span className="text-white font-mono text-xs flex items-center gap-1">
                   PyPI Package
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
                 </span>
               </a>
             </div>
