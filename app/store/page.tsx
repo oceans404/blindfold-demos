@@ -303,6 +303,7 @@ export default function StorePage() {
                 onClick={handleEncrypt}
                 disabled={!inputData}
                 className="mt-4 w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white py-3 px-4 font-medium disabled:cursor-not-allowed transition-colors font-mono"
+                data-umami-event="store-run-encrypt"
               >
                 {!inputData ? `Enter ${inputType} to encrypt` : 'RUN ENCRYPT'}
               </button>
@@ -570,6 +571,7 @@ export default function StorePage() {
                   <button
                     onClick={handleDecrypt}
                     className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 px-4 font-medium transition-colors"
+                    data-umami-event="store-run-decrypt"
                   >
                     RUN DECRYPT
                   </button>
@@ -588,6 +590,7 @@ export default function StorePage() {
                       window.open(url, '_blank');
                     }}
                     className="bg-gray-600 hover:bg-gray-700 text-white py-3 px-4 font-medium transition-colors flex flex-col items-center gap-1"
+                    data-umami-event="store-share"
                   >
                     <div className="flex items-center gap-2">
                       <svg

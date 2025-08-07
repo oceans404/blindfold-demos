@@ -27,6 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="6acd1022-ba4e-49ca-baa9-d88adcf1aa99"></script>
+      </head>
       <body className={`${jetbrainsMono.className} bg-black text-white`}>
         <Navbar />
         <main className="container mx-auto p-4 min-h-screen">{children}</main>

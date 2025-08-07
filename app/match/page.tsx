@@ -414,6 +414,7 @@ export default function MatchPage() {
                   onClick={handleGenerateHashes}
                   disabled={!inputData1.trim() || !inputData2.trim()}
                   className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white py-3 px-4 font-medium disabled:cursor-not-allowed transition-colors font-mono"
+                  data-umami-event="match-compare-hashes"
                 >
                   {!inputData1.trim() || !inputData2.trim()
                     ? 'Enter both inputs'

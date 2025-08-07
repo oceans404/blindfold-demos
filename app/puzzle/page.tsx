@@ -336,6 +336,7 @@ function PuzzlePage() {
             <a
               href={examplePuzzleLink.url}
               className="inline-block bg-green-600 hover:bg-green-700 text-white py-2 px-4 font-medium transition-colors font-mono text-sm"
+              data-umami-event="puzzle-try-example"
             >
               🧩 TRY EXAMPLE PUZZLE
             </a>
@@ -543,6 +544,7 @@ function PuzzlePage() {
             onClick={handleDecrypt}
             disabled={isLoading || !seed.trim()}
             className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white py-3 px-4 font-medium disabled:cursor-not-allowed transition-colors font-mono"
+            data-umami-event="puzzle-submit-answer"
           >
             {isLoading ? 'CHECKING...' : 'SUBMIT ANSWER'}
           </button>
@@ -696,6 +698,7 @@ function PuzzlePage() {
                 <button
                   onClick={goToNextPuzzle}
                   className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 font-medium transition-colors font-mono"
+                  data-umami-event="puzzle-go-to-next"
                 >
                   GO TO NEXT PUZZLE →
                 </button>
@@ -753,12 +756,14 @@ function PuzzlePage() {
                     <a
                       href="/puzzle"
                       className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 font-medium transition-colors font-mono"
+                      data-umami-event="puzzle-try-another"
                     >
                       TRY ANOTHER PUZZLE
                     </a>
                     <a
                       href="/store"
                       className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 font-medium transition-colors font-mono"
+                      data-umami-event="puzzle-to-encryption-page"
                     >
                       TRY ENCRYPTION
                     </a>
@@ -787,6 +792,7 @@ function PuzzlePage() {
                     <a
                       href="/store"
                       className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 font-medium transition-colors font-mono"
+                      data-umami-event="puzzle-to-encryption-page"
                     >
                       TRY ENCRYPTION
                     </a>
