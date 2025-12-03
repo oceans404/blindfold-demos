@@ -3,13 +3,16 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { SecretKey, ClusterKey, decrypt } from '@nillion/blindfold';
+import { decryptThresholdData, KeyType } from '../lib';
 
 function DecryptPageContent() {
   const searchParams = useSearchParams();
-  const [keyType, setKeyType] = useState<'secret' | 'cluster'>('secret');
+  const [keyType, setKeyType] = useState<KeyType>(KeyType.SecretKey);
   const [seed, setSeed] = useState('');
   const [showSeed, setShowSeed] = useState(false);
   const [nodeCount, setNodeCount] = useState(1);
+  const [threshold, setThreshold] = useState<number>(3);
+  const [maliciousNodes, setMaliciousNodes] = useState<number[]>([]);
   const [shares, setShares] = useState<string[]>([]);
   const [inputType, setInputType] = useState<'string' | 'integer'>('string');
   const [decryptedData, setDecryptedData] = useState<string>('');
@@ -27,7 +30,7 @@ function DecryptPageContent() {
 
     let newNodeCount = 1;
 
-    if (keyTypeParam === 'secret' || keyTypeParam === 'cluster') {
+    if (keyTypeParam === KeyType.SecretKey || keyTypeParam === KeyType.ClusterKey) {
       setKeyType(keyTypeParam);
     }
 
@@ -80,10 +83,11 @@ function DecryptPageContent() {
 
       // Create cluster configuration
       const cluster = { nodes: Array(nodeCount).fill({}) };
+      const usesThreshold = nodeCount !== threshold;
 
       // Generate key based on type
       let key;
-      if (keyType === 'secret') {
+      if (keyType === KeyType.SecretKey) {
         key = await SecretKey.generate(cluster, { store: true }, null, seed);
       } else {
         key = await ClusterKey.generate(cluster, { store: true });
@@ -100,7 +104,38 @@ function DecryptPageContent() {
       }
 
       // Decrypt the data
-      const decrypted = await decrypt(key, encryptedData);
+      let decrypted;
+      
+      // aaaaa
+
+      if (usesThreshold) {
+              
+        const decryption = await decryptThresholdData(
+          encryptedData,
+          nodeCount,
+          threshold,
+          keyType,
+          seed,
+        );
+
+        if (!decryption.validResult) {
+          setError('Could not reconstruct the secret with the provided shares');
+          return;
+        }
+
+        setMaliciousNodes(decryption.malicious);
+
+        decrypted = decryption.validResult!.result;
+
+      } else {
+        if (!key || !encryptedData) {
+          setError('Please encrypt data first');
+          return;
+        }
+        decrypted = await decrypt(key, encryptedData);
+      }
+
+      // bbbbb
 
       // Format the decrypted result based on input type
       if (inputType === 'string') {
@@ -161,7 +196,7 @@ function DecryptPageContent() {
                 <select
                   value={keyType}
                   onChange={(e) =>
-                    setKeyType(e.target.value as 'secret' | 'cluster')
+                    setKeyType(e.target.value as KeyType)
                   }
                   className="w-full p-2 text-sm border border-gray-600 bg-black text-white focus:ring-1 focus:ring-gray-500 focus:border-gray-500 transition-all font-mono"
                 >
@@ -199,6 +234,26 @@ function DecryptPageContent() {
                     const val = parseInt(e.target.value, 10);
                     if (!isNaN(val) && val >= 1 && val <= 10) {
                       setNodeCount(val);
+                    }
+                  }}
+                  min="1"
+                  max="10"
+                  className="w-full p-2 text-sm border border-gray-600 bg-black text-white focus:ring-1 focus:ring-gray-500 focus:border-gray-500 transition-all font-mono"
+                />
+              </div>
+
+              {/* Node Count */}
+              <div>
+                <label className="block text-sm font-medium mb-2 text-gray-300 font-mono">
+                 THRESHOLD
+                </label>
+                <input
+                  type="number"
+                  value={threshold}
+                  onChange={(e) => {
+                    const val = parseInt(e.target.value, 10);
+                    if (!isNaN(val) && val >= 1 && val <= 10) {
+                      setThreshold(val);
                     }
                   }}
                   min="1"
