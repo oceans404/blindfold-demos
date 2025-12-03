@@ -25,7 +25,7 @@ export const encryptThresholdData = async (
     };
     if (keyType === KeyType.SecretKey) payload.key_seed = seed;
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BLINDFOLD_API_ENDPOINT}/api/blindfold_encrypt`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BLINDFOLD_API_ENDPOINT ?? ''}/api/blindfold_encrypt`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -67,7 +67,7 @@ export const decryptThresholdData = async (
             };
             if (keyType === 'secret') payload.key_seed = seed;
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BLINDFOLD_API_ENDPOINT}/api/blindfold_decrypt`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BLINDFOLD_API_ENDPOINT ?? ''}/api/blindfold_decrypt`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
